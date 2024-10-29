@@ -10,4 +10,19 @@ class Barang_model extends CI_Model
         satuan_id = b.id) LEFT JOIN kategori c ON a.kategori_id = c.id)";
         return $this->db->query($sql)->result();
     }
+    public function save()
+    {
+        $data = array(
+            'barangkode' => htmlspecialchars($this->input->post('barkode'), true),
+            'name' => htmlspecialchars($this->input->post('name'), true),
+            'harga_beli' => htmlspecialchars($this->input->post('harga_beli'), true),
+            'harga_jual' => htmlspecialchars($this->input->post('harga_jual'), true),
+            'stok' => htmlspecialchars($this->input->post('stok'), true),
+            'kategori_id' => htmlspecialchars($this->input->post('kategori'), true),
+            'satuan_id' => htmlspecialchars($this->input->post('satuan'), true),
+            'supplier_id' => htmlspecialchars($this->input->post('supplier'), true),
+            'user_id' => $this->session->userdata('id'),
+        );
+        return $this->db->insert($this->_table, $data);
+    }
 }
