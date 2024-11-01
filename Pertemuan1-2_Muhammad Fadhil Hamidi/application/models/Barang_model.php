@@ -25,4 +25,27 @@ class Barang_model extends CI_Model
         );
         return $this->db->insert($this->_table, $data);
     }
+    public function editData()
+    {
+        $id = $this->input->post('id');
+        $data = array(
+            'barangkode' => htmlspecialchars($this->input->post('barkode'), true),
+            'name' => htmlspecialchars($this->input->post('name'), true),
+            'harga_beli' => htmlspecialchars($this->input->post('harga_beli'), true),
+            'harga_jual' => htmlspecialchars($this->input->post('harga_jual'), true),
+            'stok' => htmlspecialchars($this->input->post('stok'), true),
+            'kategori_id' => htmlspecialchars($this->input->post('kategori'), true),
+            'satuan_id' => htmlspecialchars($this->input->post('satuan'), true),
+            'supplier_id' => htmlspecialchars($this->input->post('supplier'), true),
+            'user_id' => $this->session->userdata('id'),
+        );
+        return $this->db->set($data)->where($this->primary, $id)->update($this->_table);
+    }
+    public function delete($id)
+    {
+        $this->db->where('id', $id)->delete($this->_table);
+        if ($this->db->affected_rows() > 0) {
+            $this->session->set_flashdata("success", "Data barang Berhasil DiDelete");
+        }
+    }
 }

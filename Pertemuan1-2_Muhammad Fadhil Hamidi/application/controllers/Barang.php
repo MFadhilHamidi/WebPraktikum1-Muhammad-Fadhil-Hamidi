@@ -37,4 +37,26 @@ class Barang extends CI_Controller
         }
         redirect('barang');
     }
+    public function getedit($id)
+    {
+        $data = array(
+            'title' => 'Update Data Barang',
+            'kategori' => $this->Barang_model->getById($id),
+            'content' => 'barang/edit_form'
+        );
+        $this->load->view('template/main', $data);
+    }
+    public function edit()
+    {
+        $this->Barang_model->editData();
+        if ($this->db->affected_rows() > 0) {
+            $this->session->set_flashdata("success", "Data Kategori Berhasil DiUpdate");
+        }
+        redirect('barang');
+    }
+    function delete($id)
+    {
+        $this->Kategori_model->delete($id);
+        redirect('barang');
+    }
 }
