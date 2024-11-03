@@ -41,7 +41,7 @@ class Barang extends CI_Controller
     {
         $data = array(
             'title' => 'Update Data Barang',
-            'kategori' => $this->Barang_model->getById($id),
+            'barang' => $this->Barang_model->getById($id),
             'content' => 'barang/edit_form'
         );
         $this->load->view('template/main', $data);
@@ -50,13 +50,13 @@ class Barang extends CI_Controller
     {
         $this->Barang_model->editData();
         if ($this->db->affected_rows() > 0) {
-            $this->session->set_flashdata("success", "Data Kategori Berhasil DiUpdate");
+            $this->session->set_flashdata("success", "Data Barang Berhasil DiUpdate");
         }
         redirect('barang');
     }
     function delete($id)
     {
-        $this->Kategori_model->delete($id);
+        $this->Barang_model->delete($id);
         redirect('barang');
     }
 }
