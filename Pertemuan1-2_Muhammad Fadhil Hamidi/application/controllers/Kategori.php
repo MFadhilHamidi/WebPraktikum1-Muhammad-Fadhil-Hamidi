@@ -56,4 +56,12 @@ class Kategori extends CI_Controller
         $this->Kategori_model->delete($id);
         redirect('kategori');
     }
+    public function laporan()
+    {
+        $data = array(
+            'title' => 'Tambah Laporan Data kategori',
+            'content' => 'kategori/laporan'
+        );
+        $this->load->view('template/main', $data);
+    }
 }

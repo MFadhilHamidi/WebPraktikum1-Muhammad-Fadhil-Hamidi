@@ -33,7 +33,7 @@ class Satuan_model extends CI_Model
     {
         $this->db->where('id', $id)->delete($this->_table);
         if ($this->db->affected_rows() > 0) {
-            $this->session->set_flashdata("success", "Data kategori Berhasil DiDelete");
+            $this->session->set_flashdata("success", "Data satuan Berhasil DiDelete");
         }
     }
 }

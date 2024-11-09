@@ -40,8 +40,8 @@
                                 <td> $kustomer->alamat</td>
                                 <td>
                                 <div>
-                                    <a href=" . base_url('satuan/getedit/' . $kustomer->id) . " class='btn btn-sm btn-info'><i class='fas fa-edit'></i> Edit</a>
-                                    <a href=" . base_url('satuan/delete/' . $kustomer->id) . " class='btn btn-sm btn-danger'
+                                    <a href=" . base_url('kustomer/getedit/' . $kustomer->id) . " class='btn btn-sm btn-info'><i class='fas fa-edit'></i> Edit</a>
+                                    <a href=" . base_url('kustomer/delete/' . $kustomer->id) . " class='btn btn-sm btn-danger'
                                     onclick='return confirm(\"Ingin mengapus data user ini?\");'><i class='fas fa-trash'></i> Hapus</a>
                                 </div>
                                 </td>

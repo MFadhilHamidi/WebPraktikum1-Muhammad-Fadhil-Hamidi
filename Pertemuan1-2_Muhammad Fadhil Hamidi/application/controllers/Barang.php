@@ -41,6 +41,9 @@ class Barang extends CI_Controller
     {
         $data = array(
             'title' => 'Update Data Barang',
+            'kategori' => $this->db->get('kategori')->result_array(),
+            'satuan' => $this->db->get('satuan')->result_array(),
+            'supplier' => $this->db->get('supplier')->result_array(),
             'barang' => $this->Barang_model->getById($id),
             'content' => 'barang/edit_form'
         );
@@ -58,5 +61,13 @@ class Barang extends CI_Controller
     {
         $this->Barang_model->delete($id);
         redirect('barang');
+    }
+    public function laporan()
+    {
+        $data = array(
+            'title' => 'Tambah Laporan Data barang',
+            'content' => 'barang/laporan'
+        );
+        $this->load->view('template/main', $data);
     }
 }
